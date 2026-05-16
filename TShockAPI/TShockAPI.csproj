@@ -36,6 +36,10 @@
     <PackageReference Include="GetText.NET" Version="1.7.14" />
     <PackageReference Include="MySql.Data" Version="8.4.0" />
     <PackageReference Include="Microsoft.Data.Sqlite" Version="6.0.11" />
+    <!-- Override transitive System.Text.Json 7.0.1 (CVE-2024-30105 DoS) with the latest
+         net6.0-compatible patched build. 8.0.6 is the highest STJ that still ships
+         lib/net6.0/; 9.x and 10.x dropped net6.0 support. See CHANGES.md. -->
+    <PackageReference Include="System.Text.Json" Version="8.0.6" />
   </ItemGroup>
 
   <ItemGroup>

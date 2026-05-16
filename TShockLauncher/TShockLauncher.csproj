@@ -34,6 +34,10 @@
 		<PackageReference Include="Microsoft.Data.Sqlite" Version="6.0.11" />
 		<PackageReference Include="ModFramework" Version="1.1.7" GeneratePathProperty="true" /> <!-- only used to extract out to ./bin. -->
 		<PackageReference Include="GetText.NET" Version="1.7.14" /> <!-- only used to extract out to ./bin. -->
+		<!-- Match the override in TShockAPI.csproj. The launcher has its own restore graph and
+		     ships its own deps.json; without this pin the launcher still resolves STJ to 7.0.1
+		     (vulnerable to CVE-2024-30105). See CHANGES.md. -->
+		<PackageReference Include="System.Text.Json" Version="8.0.6" />
 
 		<!-- the launcher doesnt need the direct OTAPI reference, but since PackageReference[ExcludeFromSingleFile] doesnt work, exclude the assets and copy manually -->
 		<PackageReference Include="OTAPI.Upcoming" Version="3.1.20" ExcludeAssets="all" GeneratePathProperty="true" />

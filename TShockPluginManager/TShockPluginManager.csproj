@@ -7,9 +7,15 @@
   </PropertyGroup>
 
   <ItemGroup>
+		<!-- NuGet.* pinned to 6.3.4 uniformly to address CVE-2024-0057 (NuGet.Packaging X509
+		     validation bypass — patched in 6.3.4 per GHSA-68w7-72jg-6qpp) and CVE-2023-29337
+		     (NuGet.Common/Protocol race condition — patched in 6.3.3). Resolver bumped from
+		     6.3.1 → 6.3.4; Common added as explicit transitive pin so the restore graph
+		     stays uniform on the patched line. See CHANGES.md. -->
 		<PackageReference Include="NuGet.Packaging" Version="6.3.4" />
-		<PackageReference Include="NuGet.Protocol" Version="6.3.3" />
-		<PackageReference Include="NuGet.Resolver" Version="6.3.1" />
+		<PackageReference Include="NuGet.Protocol"  Version="6.3.4" />
+		<PackageReference Include="NuGet.Resolver"  Version="6.3.4" />
+		<PackageReference Include="NuGet.Common"    Version="6.3.4" />
 		<PackageReference Include="System.CommandLine" Version="2.0.0-beta4.22272.1" />
     <PackageReference Include="System.Reflection.MetadataLoadContext" Version="6.0.0" />
     <PackageReference Include="GetText.NET" Version="1.7.14" />
